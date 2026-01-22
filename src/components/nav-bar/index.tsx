@@ -5,6 +5,7 @@ const links = [
   { href: "/career", text: "Career" },
   { href: "/learning-grid", text: "Grids" },
   { href: "/help", text: "FAQ" },
+  { href: "/users", text: "Users" },
 ];
 
 const generalLinks = links.map(({ href, text }) => (
