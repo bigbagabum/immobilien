@@ -1,8 +1,9 @@
 import { Product } from "@/common/types/Product";
+import ProductCard from "@/components/product-card";
 
 async function fetchProducts(): Promise<Product[]> {
   const res = await fetch("https://api.escuelajs.co/api/v1/products", {
-    cache: "no-store",
+    next: { revalidate: 60 }, //isr - incremental static regeneration
   });
 
   return res.json();
@@ -18,23 +19,7 @@ const ProductsPage = async () => {
       key={product.id}
       className="rounded-3xl bg-gray-100 p-6 shadow-sm hover:shadow-lg transition-shadow"
     >
-      <img
-        src={product.images?.[0]}
-        alt={product.title}
-        className="h-64 w-full object-cover rounded-2xl mb-5"
-      />
-
-      <h3 className="text-xl font-semibold">
-        {product.title}
-      </h3>
-
-      <p className="text-gray-600 text-base mt-3 line-clamp-3">
-        {product.description}
-      </p>
-
-      <div className="mt-5 text-2xl font-bold">
-        ${product.price}
-      </div>
+      <ProductCard product={product} />
     </li>
   ))}
 </ul>
