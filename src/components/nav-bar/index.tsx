@@ -7,6 +7,7 @@ const links = [
   { href: "/help", text: "FAQ" },
   { href: "/users", text: "Users" },
   { href: "/products", text: "Products" },
+  { href: "/categories", text: "Categories" },
 ];
 
 const generalLinks = links.map(({ href, text }) => (
