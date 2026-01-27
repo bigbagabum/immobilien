@@ -3,14 +3,14 @@ import type { Category } from "@/common/types/Category";
 
 async function fetchCategories(): Promise<Category[]> {
   const res = await fetch("https://api.escuelajs.co/api/v1/categories", {
-    cache: "no-store",
+  cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Failed to fetch categories");
-  return res.json();
+  return await res.json();
 }
 
-export default async function CategoriesPage() {
+export default async function Categories() {
   const categories = await fetchCategories();
 
   return (
@@ -19,8 +19,11 @@ export default async function CategoriesPage() {
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map((c) => (
-          <li key={c.id} className="rounded-3xl bg-gray-100 p-6 hover:shadow-lg transition-shadow">
-            <Link href={`/categories/${c.id}`} className="block">
+          <li
+            key={c.id}
+            className="rounded-3xl bg-gray-100 p-6 hover:shadow-lg transition-shadow"
+          >
+            <Link href={`/categories/${c.slug}`} className="block">
               <img
                 src={c.image}
                 alt={c.name}

@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Category } from "@/common/types/Category";
 
-async function fetchCategory(id: string): Promise<Category> {
-  const res = await fetch(`https://api.escuelajs.co/api/v1/categories/${id}`, {
+async function fetchCategory(slug: string): Promise<Category> {
+  const res = await fetch(`https://api.escuelajs.co/api/v1/categories/slug/${slug}`, {
     cache: "no-store",
   });
 
@@ -18,10 +18,10 @@ async function fetchCategory(id: string): Promise<Category> {
 export default async function CategoryPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
-  const category = await fetchCategory(id);
+  const { slug } = await params;
+  const category = await fetchCategory(slug);
 
   return (
     <section className="mx-auto max-w-3xl px-4 py-16">
