@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1769426921391,
-      "tag": "0000_sloppy_gargoyle",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1769428643355,
-      "tag": "0001_melodic_salo",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1769428809894,
-      "tag": "0002_even_hex",
+      "when": 1769542470019,
+      "tag": "0000_simple_wasp",
       "breakpoints": true
     }
   ]
