@@ -1,9 +1,13 @@
 import { db } from "@/db";
 import { reviewsTable } from "@/db/schema";
 import DeleteReviewButton from "../delete-review-btn";
+import { desc } from "drizzle-orm";
 
 export default async function Reviews() {
-  const reviews = await db.select().from(reviewsTable);
+  const reviews = await db
+    .select()
+    .from(reviewsTable)
+    .orderBy(desc(reviewsTable.id));
 
   return (
     <div>
@@ -13,12 +17,23 @@ export default async function Reviews() {
         {reviews.map((review) => (
           <li
             key={review.id}
-            className="relative group p-4 pb-14 bg-gray-100 rounded-2xl"
+            className=" group p-4  bg-gray-100 rounded-2xl"
           >
             <h3 className="font-bold text-lg">{review.title}</h3>
+
             <p className="mt-2 whitespace-pre-wrap">{review.content}</p>
 
-            <DeleteReviewButton id={review.id} />
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-sm text-gray-500">
+                {review.createdAt.toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </span>
+                
+              <DeleteReviewButton id={review.id} />
+            </div>
           </li>
         ))}
 

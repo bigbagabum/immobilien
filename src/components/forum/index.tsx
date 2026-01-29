@@ -1,9 +1,11 @@
 import { db } from "@/db";
 import { postsTable } from "@/db/schema";
 import DeletePostButton from "../delete-post-btn";
+import { desc } from "drizzle-orm";
+
 
 export default async function Forum() {
-  const posts = await db.select().from(postsTable);
+  const posts = await db.select().from(postsTable).orderBy(desc(postsTable.id));
 
   return (
     <div>
