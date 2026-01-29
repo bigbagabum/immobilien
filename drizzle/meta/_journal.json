@@ -8,6 +8,20 @@
       "when": 1769591166800,
       "tag": "0000_narrow_stark_industries",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1769683139930,
+      "tag": "0001_brave_energizer",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1769686985808,
+      "tag": "0002_confused_red_hulk",
+      "breakpoints": true
     }
   ]
 }
